@@ -1,21 +1,45 @@
-
-
-function factorial(num)
+function fibonachi(num)
 {
-    factorial.cache = factorial.cache || {}
-    if ( num in factorial.cache)
+
+    fibonachi.cache = fibonachi.cache || {}
+    
+    if (num===0)
     {
-        return factorial.cache[num]
+        return 0
     }
-    if ( num === 1)
+
+    if (num===1)
     {
         return 1
     }
-    
-    let result = num * factorial(num - 1)
-    factorial.cache[num] = result;
+
+
+    if (num in fibonachi.cache)
+    {
+        return fibonachi.cache[num]
+    }
+    let result = fibonachi(num-1) + fibonachi(num-2)
+    fibonachi.cache[num] = result
     return result
+
+
 }
 
-console.log(factorial(1))
-console.log(factorial.cache)
+console.log(fibonachi(8))
+console.log(fibonachi.cache)
+
+
+
+function add(a, b)
+{
+    if ( b === undefined)
+    {
+        return (b) =>
+        {
+            return a + b
+        }
+    }
+    return a + b
+}
+
+console.log(add(5)(6))
