@@ -20,7 +20,7 @@ function getCourse() {
 
 async function getCourses() {
     let course_one = await getCourse()
-    let course_two;
+    let course_two = await getCourse()
     
     let result = {
         title: course_one.title + "+" + course_two.title,
