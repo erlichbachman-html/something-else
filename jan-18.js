@@ -10,23 +10,25 @@ let courses = [
 
 function getCourse() {
     return new Promise((resolve, reject) => {
+        let delay = Math.floor(Math.random()* 3000) + 1000
         setTimeout(() => {
             resolve(courses[Math.floor(Math.random() * courses.length)])
-        }, 4000)
+        }, delay)
     })
 }
 
 
 async function getCourses() {
     let course_one = await getCourse()
-    let course_two = await getCourse()
+    let course_two;
+    
     let result = {
-        title: course_one.title + "+"+ course_two.title,
+        title: course_one.title + "+" + course_two.title,
         duration: course_one.duration + course_two.duration,
         top: [...new Set([...course_one.top, ...course_two.top])]
     }
     return result
 }
 
-getCourses().then((result)=>console.log(result))
+getCourses().then((result) => console.log(result))
 
