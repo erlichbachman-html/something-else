@@ -19,8 +19,7 @@ function getCourse() {
 
 
 async function getCourses() {
-    let course_one = await getCourse()
-    let course_two = await getCourse()
+    let [course_one, course_two] = await Promise.all([getCourse(), getCourse()])
     
     let result = {
         title: course_one.title + "+" + course_two.title,
